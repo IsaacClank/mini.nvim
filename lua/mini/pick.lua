@@ -1111,6 +1111,8 @@ MiniPick.default_show = function(buf_id, items, query, opts)
     icon_extmark_opts.end_row, icon_extmark_opts.end_col = i - 1, prefix_data[i].text:len()
     H.set_extmark(buf_id, ns_id, i - 1, 0, icon_extmark_opts)
   end
+
+  if type(opts.hook) == 'table' and type(opts.hook.post_show) == 'function' then opts.hook.post_show(prefix_data) end
 end
 
 --- Default preview
